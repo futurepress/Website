@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FuturePress</title>
+    <description></description>
+    <link>http://futurepress.org/</link>
+    <atom:link href="http://futurepress.org/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 19 Oct 2015 09:37:45 -0400</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2015 09:37:45 -0400</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Annotations in Ebooks</title>
+        <description>&lt;p&gt;Epub.js, a JavaScript library for rendering ebooks (using the ePub format) in the browser and on mobile devices, is used by a growing community in projects ranging from library catalogues to self published novels. Recently there has been a return to the our roots with several projects adopting it for academic research. The first request from these projects is always: how can we allow annotation in our reader?&lt;/p&gt;
+
+&lt;p&gt;We’re excited to announce that we’ve been awarded a grant from the &lt;a href=&quot;http://anno.fund/&quot;&gt;Hypothes.is Open Annotation Fund&lt;/a&gt; to add support for the &lt;a href=&quot;http://www.idpf.org/epub/oa/&quot;&gt;Epub Open Annotation Specification&lt;/a&gt;. This will allow Epub.js to support highlights and annotations in an flexible and unintrusive way.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&amp;quot;https://hypothes.is&amp;quot;&quot;&gt;Hypothes.is&lt;/a&gt; is building an open platform for discussion on the web. It leverages annotation to enable sentence-level critique or note-taking on top of many form of digital media, from webpages, to pdfs and epubs. Their efforts are based on the Annotator project, and annotation standards for digital documents being developed by the W3C Web Annotation Working Group.&lt;/p&gt;
+
+&lt;p&gt;Our &lt;a href=&quot;http://futurepress.github.io/epub.js/examples/hypothesis.html&quot;&gt;current integration with Hypothes.is&lt;/a&gt; is nearly two years old now and the interface needs rethinking and updating. Sliding panels coming in from both side aren’t ideal and obscure content. The design too closely mimics a printed book and as a result the paginated rendering hinders being able to make annotations across pages.&lt;/p&gt;
+
+&lt;p&gt;A scrolling view would allow navigating the book and using the Hypothes.is toolbar at the same time. We’re going to create a new example reader with the controls, navigation and Hypothes.is integrated together with scrolling text.&lt;/p&gt;
+
+&lt;p&gt;The next major release of Epub.js (v0.3) will update much of the library, allowing for continuous scrolling rendering and bringing a cleaner, simpler and better documented API. A compatibility script allow updating from the current API with minimal effort.&lt;/p&gt;
+
+&lt;p&gt;You can view an &lt;a href=&quot;https://s3.amazonaws.com/epubjs/examples/single-full.html&quot;&gt;example of the new renderer&lt;/a&gt;, and be a part of the development on the &lt;a href=&quot;https://github.com/futurepress/epub.js/tree/v0.3&quot;&gt;v0.3 branch on github&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 18 Oct 2015 15:57:12 -0400</pubDate>
+        <link>http://futurepress.org/update/2015/10/18/annotations-in-ebooks.html</link>
+        <guid isPermaLink="true">http://futurepress.org/update/2015/10/18/annotations-in-ebooks.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+  </channel>
+</rss>

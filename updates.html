@@ -1,0 +1,30 @@
+---
+layout: default
+title: Updates
+permalink: /updates/
+---
+
+
+<div class="updates">
+  <h2 class="post-heading">Updates</h2>
+
+  {% for post in site.posts %}
+  <div class="post-list">
+
+    <header class="post-header">
+      <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+      <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
+    </header>
+
+    <article class="post-content">
+      {{ post.excerpt }}
+      <a href="{{ post.url | prepend: site.baseurl }}">Continue Reading &rBarr;</a>
+    </article>
+
+
+  </div>
+  {% endfor %}
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
