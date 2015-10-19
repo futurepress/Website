@@ -5,8 +5,8 @@
     <description></description>
     <link>http://futurepress.org/</link>
     <atom:link href="http://futurepress.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Oct 2015 11:41:06 -0400</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2015 11:41:06 -0400</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2015 11:54:41 -0400</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2015 11:54:41 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -17,7 +17,7 @@
 
 &lt;p&gt;&lt;a href=&quot;&amp;quot;https://hypothes.is&amp;quot;&quot;&gt;Hypothes.is&lt;/a&gt; is building an open platform for discussion on the web. It leverages annotation to enable sentence-level critique or note-taking on top of many form of digital media, from webpages, to pdfs and epubs. Their efforts are based on the Annotator project, and annotation standards for digital documents being developed by the W3C Web Annotation Working Group.&lt;/p&gt;
 
-&lt;p&gt;Our &lt;a href=&quot;http://futurepress.github.io/epub.js/examples/hypothesis.html&quot;&gt;current integration with Hypothes.is&lt;/a&gt; is nearly two years old now and the interface needs rethinking and updating. Sliding panels coming in from both side aren’t ideal and obscure content. The design too closely mimics a printed book and as a result the paginated rendering hinders being able to make annotations across pages.&lt;/p&gt;
+&lt;p&gt;Our &lt;a href=&quot;https://s3.amazonaws.com/epubjs/examples/hypothesis.html&quot;&gt;current integration with Hypothes.is&lt;/a&gt; is nearly two years old now and the interface needs rethinking and updating. Sliding panels coming in from both side aren’t ideal and obscure content. The design too closely mimics a printed book and as a result the paginated rendering hinders being able to make annotations across pages.&lt;/p&gt;
 
 &lt;p&gt;A scrolling view would allow navigating the book and using the Hypothes.is toolbar at the same time. We’re going to create a new example reader with the controls, navigation and Hypothes.is integrated together with scrolling text.&lt;/p&gt;
 

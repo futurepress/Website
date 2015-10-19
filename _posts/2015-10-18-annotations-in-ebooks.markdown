@@ -11,7 +11,7 @@ We’re excited to announce that we’ve been awarded a grant from the [Hypothes
 
 [Hypothes.is]("https://hypothes.is") is building an open platform for discussion on the web. It leverages annotation to enable sentence-level critique or note-taking on top of many form of digital media, from webpages, to pdfs and epubs. Their efforts are based on the Annotator project, and annotation standards for digital documents being developed by the W3C Web Annotation Working Group.
 
-Our [current integration with Hypothes.is](http://futurepress.github.io/epub.js/examples/hypothesis.html) is nearly two years old now and the interface needs rethinking and updating. Sliding panels coming in from both side aren't ideal and obscure content. The design too closely mimics a printed book and as a result the paginated rendering hinders being able to make annotations across pages.
+Our [current integration with Hypothes.is](https://s3.amazonaws.com/epubjs/examples/hypothesis.html) is nearly two years old now and the interface needs rethinking and updating. Sliding panels coming in from both side aren't ideal and obscure content. The design too closely mimics a printed book and as a result the paginated rendering hinders being able to make annotations across pages.
 
 A scrolling view would allow navigating the book and using the Hypothes.is toolbar at the same time. We’re going to create a new example reader with the controls, navigation and Hypothes.is integrated together with scrolling text.
 
