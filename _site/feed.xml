@@ -5,9 +5,251 @@
     <description></description>
     <link>http://futurepress.org/</link>
     <atom:link href="http://futurepress.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 20 Oct 2015 14:36:33 -0400</pubDate>
-    <lastBuildDate>Tue, 20 Oct 2015 14:36:33 -0400</lastBuildDate>
+    <pubDate>Sun, 21 Feb 2016 23:34:57 -0500</pubDate>
+    <lastBuildDate>Sun, 21 Feb 2016 23:34:57 -0500</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Epub CFI Updates</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://www.idpf.org/epub/linking/cfi/epub-cfi.html&quot;&gt;EPUB Canonical Fragment Identifiers&lt;/a&gt; (epubcfi) allow for a powerful
+and standardized way to reference locations in an ePub. They are core to the rendering and navigation features in Epub.js and have been significant updated in v0.3.&lt;/p&gt;
+
+&lt;p&gt;The most important update is the ability to handle &lt;a href=&quot;http://www.idpf.org/epub/linking/cfi/epub-cfi.html#sec-ranges&quot;&gt;Epub Cfi Ranges&lt;/a&gt;. Ranges provide an easy way to reference a span of text content, without worrying about spanning the underlying Dom Elements. For instance in Moby Dick “Call me Ishmael.” can be represented by &lt;code&gt;epubcfi(/6/14[xchapter_001]!/4/2/4/2[c001s0001],/1:0,/1:16)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using Epub,js you can retrieve text from anywhere in the book by passing a epubcfi range to &lt;code&gt;book.range(…)&lt;/code&gt;. This will parse the epubcfi, load the chapter and pass that chapter’s document to &lt;code&gt;EpubCfi.toRange(doc)&lt;/code&gt;, returning a Dom Range containing the text. You can then get the text content by calling to &lt;code&gt;range.toString()&lt;/code&gt; on the range returned in the promise.&lt;/p&gt;
+
+&lt;p&gt;Additionally user’s selections in rendered chapters will trigger a “selected” event that returns the epubcfi range of the selected text. This forms the basis for our integration with Hypothes.is, allowing for saving the epubcfi range with the annotation.&lt;/p&gt;
+
+&lt;p&gt;To help with highlighting these annotations, the epubcfi parser can now ignore elements with a specified class names. It will treat the text of an ignored element as a part of the previous textNode. This allows for adding spans in a document to highlight a range of text, without it interfering with returning a correct epubcfi.&lt;/p&gt;
+
+&lt;p&gt;Lastly all functions of Epub.js have been organized into commonjs modules, so you can require the epubcfi parsers using &lt;code&gt;require(&#39;epubjs/src/epubcfi&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is a quick example of simple highlighting using the Rangy library.&lt;/p&gt;
+
+&lt;script src=&quot;https://s3.amazonaws.com/epubjs-examples/epub.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-core.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-classapplier.js&quot;&gt;&lt;/script&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+
+    #viewer {
+      width:  400px;
+      height: 600px;
+      background: white;
+      box-shadow: 0 0 4px #ccc;
+      border-radius: 5px;
+
+      padding: 20px 40px;
+      position: relative;
+      margin: 40px auto;
+    }
+
+    #frame {
+      position: relative;
+    }
+
+    #viewer iframe {
+        background: white;
+    }
+
+    #prev {
+      left: 40px;
+    }
+
+    #next {
+      right: 40px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      margin-top: -32px;
+      font-size: 64px;
+      color: #E2E2E2;
+      font-family: arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    .arrow:hover {
+      color: #777;
+    }
+
+    .arrow:active {
+      color: #000;
+    }
+
+    #toc {
+      display: block;
+      margin: 10px auto;
+    }
+
+    ::selection {
+      background: yellow;
+    }
+
+    #extras {
+      width: 500px;
+      margin: 40px auto;
+    }
+
+		#highlights {
+			list-style: none;
+			margin-left: 0;
+			padding: 0;
+		}
+
+    #highlights li {
+			list-style: none;
+      margin-bottom: 20px;
+			border-top: 1px solid #E2E2E2;
+			padding: 10px;
+    }
+
+    #highlights a {
+      display: block;
+    }
+
+
+&lt;/style&gt;
+
+&lt;div id=&quot;frame&quot;&gt;
+  &lt;div id=&quot;viewer&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;prev&quot; class=&quot;arrow&quot;&gt;‹&lt;/div&gt;
+  &lt;div id=&quot;next&quot; class=&quot;arrow&quot;&gt;›&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;extras&quot;&gt;
+  &lt;ul id=&quot;highlights&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // Load the opf
+  var book = ePub(&quot;https://s3.amazonaws.com/moby-dick/OPS/package.opf&quot;);
+
+  var rendition = book.renderTo(&quot;viewer&quot;, {
+    method: &quot;paginate&quot;,
+    width: 400,
+    height: 600,
+    ignoreClass: &#39;annotator-hl&#39;
+  });
+
+  var displayed = rendition.display(6);
+
+  // Navigation loaded
+  book.loaded.navigation.then(function(toc){
+    // console.log(toc);
+  });
+
+  var next = document.getElementById(&quot;next&quot;);
+  next.addEventListener(&quot;click&quot;, function(){
+    rendition.next();
+  }, false);
+
+  var prev = document.getElementById(&quot;prev&quot;);
+  prev.addEventListener(&quot;click&quot;, function(){
+    rendition.prev();
+  }, false);
+
+  var keyListener = function(e){
+
+    // Left Key
+    if ((e.keyCode || e.which) == 37) {
+      rendition.prev();
+    }
+
+    // Right Key
+    if ((e.keyCode || e.which) == 39) {
+      rendition.next();
+    }
+
+  };
+
+  rendition.on(&quot;keyup&quot;, keyListener);
+  document.addEventListener(&quot;keyup&quot;, keyListener, false);
+
+  rendition.on(&quot;locationChanged&quot;, function(location){
+    // console.log(location);
+  });
+
+  var applier;
+
+  displayed.then(function(renderer){
+    // wait till something has been rendered to add applier
+    applier = rangy.createClassApplier(&quot;annotator-hl&quot;);
+  });
+
+  // Apply a class to selected text
+  rendition.on(&quot;selected&quot;, function(cfiRange) {
+    // Get the dom range of the selected text
+    var range = rendition.range(cfiRange);
+    // Create an empty Rangy range
+    var rr = rangy.createRange();
+    // Set that range to equal the dom range
+    rr.setStart(range.startContainer, range.startOffset);
+    rr.setEnd(range.endContainer, range.endOffset);
+    // Add the class to that range
+    applier.applyToRange(rr);
+    // Clear the selection
+    window.getSelection().removeAllRanges();
+
+  });
+
+  // Add a yellow background to text with our highlight class
+  rendition.hooks.render.register(function (view) {
+    var highlightColor = [
+      [&#39;.annotator-hl&#39;, [&#39;background-color&#39;, &#39;yellow&#39;]]
+    ];
+    view.addStylesheetRules(highlightColor);
+  })
+
+  // Illustration of how to get text from a saved cfiRange
+  var highlights = document.getElementById(&#39;highlights&#39;);
+
+  rendition.on(&quot;selected&quot;, function(cfiRange) {
+
+    book.range(cfiRange).then(function (range) {
+      var text;
+      var li = document.createElement(&#39;li&#39;);
+      var a = document.createElement(&#39;a&#39;);
+      var textNode;
+
+      if (range) {
+        text = range.toString();
+        textNode = document.createTextNode(text);
+
+        a.textContent = cfiRange;
+        a.href = &quot;#&quot; + cfiRange;
+        a.onclick = function () {
+          rendition.display(cfiRange);
+        };
+
+        li.appendChild(a);
+        li.appendChild(textNode);
+        highlights.appendChild(li);
+      }
+
+    })
+
+  });
+
+&lt;/script&gt;
+
+</description>
+        <pubDate>Mon, 15 Feb 2016 14:57:12 -0500</pubDate>
+        <link>http://futurepress.org/update/2016/02/15/epubcfi-updates.html</link>
+        <guid isPermaLink="true">http://futurepress.org/update/2016/02/15/epubcfi-updates.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Annotations in Ebooks</title>
