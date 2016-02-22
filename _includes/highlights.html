@@ -198,8 +198,9 @@
 
         a.textContent = cfiRange;
         a.href = "#" + cfiRange;
-        a.onclick = function () {
+        a.onclick = function (e) {
           rendition.display(cfiRange);
+          e.stopPropagation();
         };
 
         li.appendChild(a);
