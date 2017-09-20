@@ -174,11 +174,10 @@
   });
 
   // Add a yellow background to text with our highlight class
-  rendition.hooks.render.register(function (view) {
-    var highlightColor = [
-      ['.annotator-hl', ['background-color', 'yellow']]
-    ];
-    view.addStylesheetRules(highlightColor);
+  rendition.themes.default({
+    '.annotator-hl' : {
+      'background-color': 'yellow'
+    }
   })
 
   // Illustration of how to get text from a saved cfiRange
