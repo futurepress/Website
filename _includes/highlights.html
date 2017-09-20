@@ -1,4 +1,4 @@
-<script src="https://s3.amazonaws.com/epubjs-examples/epub.js"></script>
+<script src="https://s3.amazonaws.com/epubjs-examples/dist/epub.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 
@@ -186,7 +186,7 @@
 
   rendition.on("selected", function(cfiRange) {
 
-    book.range(cfiRange).then(function (range) {
+    book.getRange(cfiRange).then(function (range) {
       var text;
       var li = document.createElement('li');
       var a = document.createElement('a');
