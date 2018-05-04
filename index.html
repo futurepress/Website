@@ -22,11 +22,11 @@ community of discovery.
     <p>Epub.js is an open source Javascript library that allows any web page to render Epub documents on any device with a modern browser.</p>
 
     <div id="reader-wrap">
-      <div id="prev" onclick="book.prevPage();" class="arrow">‹</div>
+      <div id="prev" onclick="rendition.prev();" class="arrow">‹</div>
       <div id="reader">
         <div id="area"></div>
       </div>
-      <div id="next" onclick="book.nextPage();"class="arrow">›</div>
+      <div id="next" onclick="rendition.next();"class="arrow">›</div>
     </div>
 
     <p>Epub.js contains a flexible rendering engine and provides a simple interface for common ebook functions such as styling, persistence and pagination.</p>
@@ -37,13 +37,14 @@ community of discovery.
     <h4>Getting started</h4>
     <p>Just include a single javascript file, and pointing it at a hosted epub:</p>
 {% highlight html %}
-<script src="https://cdn.jsdelivr.net/epub.js/0.2.15/epub.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
 <script>
   var book = ePub("url/to/book/");
-  book.renderTo("area");
+  var rendition = book.renderTo("area");
+  rendition.display();
 </script>
 {% endhighlight %}
-    <p><a href="https://github.com/futurepress/epub.js/blob/master/documentation/README.md">See the Documentation</a> for a full list of options, usage and events.</p>
+    <p><a href="http://epubjs.org/documentation/0.3/">See the Documentation</a> for a full list of options, usage and events.</p>
   </div>
   <div class="block">
     <h4>About</h4>
@@ -68,10 +69,10 @@ community of discovery.
 </div>
 
 <script>
-   var book = ePub("https://s3.amazonaws.com/moby-dick/", {
+   var book = ePub("https://s3.amazonaws.com/moby-dick/");
+   var rendition = book.renderTo("area", {
      width: 400,
-     height: 600
+     height: 640
    });
-
-   book.renderTo("area");
+   rendition.display();
 </script>
