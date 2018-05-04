@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Version 0.3 Released"
+date:   2018-04-03 19:57:12
+categories: update
+---
+
+The next major release of Epub.js (v0.3) has been merged into [master
+on Github](https://github.com/futurepress/epub.js) and released on [NPM as epubjs@0.3](https://www.npmjs.com/package/epubjs).
+
+This version is a large overhaul of the code, rewritten in ES6 using modules and transpiled to ES5 by Babel. JSDOC documentation for all new updates is now hosted at [epubjs.org/documentation/0.3/](http://epubjs.org/documentation/0.3/).
+
+The reader was moved to its own [epubjs-reader](https://github.com/futurepress/epubjs-reader) repo, and will hopefully get an overhaul soon.
+
+For those of you that haven't tried v0.3 yet, hopefully the transition won't be too painful. More information of process of updating is on the GitHub wiki at:
+
+[Updating-to-v0.3-from-v0.2](https://github.com/futurepress/epub.js/wiki/Updating-to-v0.3-from-v0.2)
+
+Please reach out with any issues you run into. We'll be available on [Gitter](https://gitter.im/futurepress/epub.js) and reviewing (+ cleaning) the issues on Github as well.
