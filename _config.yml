@@ -2,10 +2,11 @@
 title: FuturePress
 email: futurepressorg@gmail.com
 description: > # Open standards, open books, open source.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://futurepress.org" # the base hostname & protocol for your site
+baseurl: '' # the subpath of your site, e.g. /blog/
+url: 'http://futurepress.org' # the base hostname & protocol for your site
 twitter_username: Epubjs
-github_username:  epub.js
+github_username: futurepress
+github_repo: epub.js
 
 # Build settings
 markdown: kramdown
